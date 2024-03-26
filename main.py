@@ -23,10 +23,10 @@ label_tama.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
 ##### Creation of variables and initialisation #####
 
-health_kik = ['♥','♥','♥','♥','♥']
-health_vio = ['♥','♥','♥','♥','♥']
-health_mim = ['♥','♥','♥','♥','♥']
-health_gin = ['♥','♥','♥','♥','♥']
+health_kik = ['♥','♥','♥','♥','♥','♥','♥']
+health_vio = ['♥','♥','♥','♥','♥','♥','♥']
+health_mim = ['♥','♥','♥','♥','♥','♥','♥']
+health_gin = ['♥','♥','♥','♥','♥','♥','♥']
 
 hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
 hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
@@ -49,19 +49,19 @@ def show_health () :
     health_bar_kik.place(x=800, y=260)
 
 def show_hunger () :
-    hunger_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_kik.place(x=100, y=260)
+    hunger_bar_kik = Label(fenetre, text= hunger_kik, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
+    hunger_bar_kik.place(x=100, y=230)
 
-    health_bar_vio = Label(fenetre, text= health_vio, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_vio.place(x=350, y=260)
+    hunger_bar_vio = Label(fenetre, text= hunger_vio, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
+    hunger_bar_vio.place(x=350, y=230)
 
-    health_bar_mim = Label(fenetre, text= health_mim, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_mim.place(x=575, y=260)
+    hunger_bar_mim = Label(fenetre, text= hunger_mim, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
+    hunger_bar_mim.place(x=575, y=230)
 
-    health_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_kik.place(x=800, y=260)
+    hunger_bar_kik = Label(fenetre, text= hunger_kik, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
+    hunger_bar_kik.place(x=800, y=230)
 
-
+show_hunger()
 show_health()
 
 ###### Creation of the menu #####
