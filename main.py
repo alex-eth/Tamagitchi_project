@@ -33,6 +33,18 @@ hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
 hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
 hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
 
+ex_kik = ['⚡','⚡','⚡','⚡','⚡']
+ex_vio = ['⚡','⚡','⚡','⚡','⚡']
+ex_mim = ['⚡','⚡','⚡','⚡','⚡']
+ex_gin = ['⚡','⚡','⚡','⚡','⚡']
+
+bor_kik = ['🥱','🥱','🥱','🥱','🥱']
+bor_vio = ['🥱','🥱','🥱','🥱','🥱']
+bor_mim = ['🥱','🥱','🥱','🥱','🥱']
+bor_gin = ['🥱','🥱','🥱','🥱','🥱']
+
+
+
 ##### Functions #####
 
 def show_health () :
@@ -45,7 +57,7 @@ def show_health () :
     health_bar_mim = Label(fenetre, text= health_mim, fg='red',bg = 'white', font="Arial 15 italic")
     health_bar_mim.place(x=575, y=260)
 
-    health_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
+    health_bar_kik = Label(fenetre, text= health_gin, fg='red',bg = 'white', font="Arial 15 italic")
     health_bar_kik.place(x=800, y=260)
 
 def show_hunger () :
@@ -58,11 +70,25 @@ def show_hunger () :
     hunger_bar_mim = Label(fenetre, text= hunger_mim, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
     hunger_bar_mim.place(x=575, y=230)
 
-    hunger_bar_kik = Label(fenetre, text= hunger_kik, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
+    hunger_bar_kik = Label(fenetre, text= hunger_gin, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
     hunger_bar_kik.place(x=800, y=230)
+
+def show_exhaustion () :
+    ex_bar_kik = Label(fenetre, text= ex_kik, fg='gold',bg = 'white', font="Arial 15 italic")
+    ex_bar_kik.place(x=100, y=200)
+
+    ex_bar_vio = Label(fenetre, text= ex_vio, fg='gold',bg = 'white', font="Arial 15 italic")
+    ex_bar_vio.place(x=350, y=200)
+
+    ex_bar_mim = Label(fenetre, text= ex_mim, fg='gold',bg = 'white', font="Arial 15 italic")
+    ex_bar_mim.place(x=575, y=200)
+
+    ex_bar_kik = Label(fenetre, text= ex_gin, fg='gold',bg = 'white', font="Arial 15 italic")
+    ex_bar_kik.place(x=800, y=200)
 
 show_hunger()
 show_health()
+show_exhaustion()
 
 ###### Creation of the menu #####
 
@@ -94,4 +120,6 @@ bouton_sleep.place(x=500,y=600)
 
 
 fenetre.mainloop()
+
+
 
