@@ -4,6 +4,8 @@ from PIL import Image, ImageTk
 from random import *
 import time
 from datetime import datetime
+from tkinter import ttk
+
 
 ##### Creation of the window #####
 fenetre = Tk()
@@ -99,10 +101,23 @@ def show_boredom () :
     bor_bar_gin = Label(fenetre, text= bor_gin,fg='blue',bg = 'white', font="Arial 15 italic")
     bor_bar_gin.place(x=800, y=170)
 
-show_hunger()
-show_health()
-show_exhaustion()
-show_boredom()
+#show_hunger()
+#show_health()
+#show_exhaustion()
+#show_boredom()
+
+life = Label(fenetre, text= "♥   :",fg='firebrick1',bg = 'white', font="Arial 15 italic")
+life.place(x=10, y=150)
+
+hunger = Label(fenetre, text= "🍔  :",fg='chocolate1',bg = 'white', font="Arial 15 italic")
+hunger.place(x=5, y=173)
+
+ex = Label(fenetre, text= "⚡ :",fg='goldenrod1',bg = 'white', font="Arial 15 italic")
+ex.place(x=0, y=202)
+
+bor = Label(fenetre, text= "😴 :",fg='cornflower blue',bg = 'white', font="Arial 15 italic")
+bor.place(x=2, y=225)
+
 
 ###### Creation of the menu #####
 
@@ -131,6 +146,29 @@ bouton_sleep = Button(fenetre,text = " Sleep ",bg = 'cornflowerblue',border=roun
 bouton_sleep.configure(height=4, width=22)
 bouton_sleep.place(x=500,y=600)
 
+#####################################################################################################################
 
+
+progress_bar = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+progress_bar.pack()
+
+# maximum value of the progress bar
+max_value = 100
+progress_bar["maximum"] = max_value
+
+# initial value of the progress bar
+progress_bar["value"] = max_value
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger():
+    current_value = progress_bar["value"]
+    if current_value > 0:
+        progress_bar["value"] = current_value - 1
+    fenetre.after(5000, decrease_hunger)
+
+
+decrease_hunger()
 
 fenetre.mainloop()
+
+
