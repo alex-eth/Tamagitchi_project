@@ -118,6 +118,18 @@ ex.place(x=0, y=202)
 bor = Label(fenetre, text= "😴 :",fg='cornflower blue',bg = 'white', font="Arial 15 italic")
 bor.place(x=2, y=225)
 
+##### Functions for buttons ######
+
+def eat ():
+    
+    
+    
+def sleep ():
+    
+    
+def play ():
+    
+
 
 ###### Creation of the menu #####
 
@@ -170,5 +182,3 @@ def decrease_hunger():
 decrease_hunger()
 
 fenetre.mainloop()
-
-
