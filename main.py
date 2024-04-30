@@ -120,15 +120,17 @@ bor.place(x=2, y=225)
 
 ##### Functions for buttons ######
 
-#def eat ():
-    
-    
-    
+def eat ():
+    increase_hunger()
+#
+#
 #def sleep ():
-    
-    
+#
+#
+#
 #def play ():
-    
+#
+#
 
 
 ###### Creation of the menu #####
@@ -146,7 +148,7 @@ file_menu.add_command(label="Save", command=fenetre.destroy)
 
 
 ##### Creation of the buttons #####
-bouton_eat = Button(fenetre,text = " Eat ",bg = 'chocolate2',border=round(5), command = fenetre.destroy)
+bouton_eat = Button(fenetre,text = " Eat ",bg = 'chocolate2',border=round(5), command = eat)
 bouton_eat.configure(height=4, width=22)
 bouton_eat.place(x=10,y=600)
 
@@ -171,6 +173,8 @@ progress_bar["maximum"] = max_value
 # initial value of the progress bar
 progress_bar["value"] = max_value
 
+
+
 # Function that decrease the progress bar value every 5 seconds
 def decrease_hunger():
     current_value = progress_bar["value"]
@@ -178,6 +182,9 @@ def decrease_hunger():
         progress_bar["value"] = current_value - 1
     fenetre.after(5000, decrease_hunger)
 
+def increase_hunger():
+    current_value = progress_bar["value"]
+    progress_bar["value"] = current_value + 10
 
 decrease_hunger()
 
