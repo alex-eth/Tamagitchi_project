@@ -120,14 +120,14 @@ bor.place(x=2, y=225)
 
 ##### Functions for buttons ######
 
-def eat ():
+#def eat ():
     
     
     
-def sleep ():
+#def sleep ():
     
     
-def play ():
+#def play ():
     
 
 
