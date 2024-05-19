@@ -28,22 +28,22 @@ label_tama.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
 current_tama = "kiki"
 
-##### Creation of variables and initialisation (not used) #####
+##### Creation of variables and initialisation (not used for all) #####
 
-#health_kik = ['♥','♥','♥','♥','♥','♥','♥']
-#health_vio = ['♥','♥','♥','♥','♥','♥','♥']
-#health_mim = ['♥','♥','♥','♥','♥','♥','♥']
-#health_gin = ['♥','♥','♥','♥','♥','♥','♥']
+health_kik = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_vio = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_mim = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_gin = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
 #
 #hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
 #hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
 #hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
 #hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
 #
-#ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-#ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-#ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-#ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡']
 #
 #bor_kik = ['😴','😴','😴','😴']
 #bor_vio = ['😴','😴','😴','😴']
@@ -56,16 +56,16 @@ current_tama = "kiki"
 
 def show_health () :
     health_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_kik.place(x=100, y=260)
+    health_bar_kik.place(x=95, y=147)
 
     health_bar_vio = Label(fenetre, text= health_vio, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_vio.place(x=350, y=260)
+    health_bar_vio.place(x=300, y=147)
 
     health_bar_mim = Label(fenetre, text= health_mim, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_mim.place(x=575, y=260)
+    health_bar_mim.place(x=500, y=147)
 
     health_bar_gin = Label(fenetre, text= health_gin, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_gin.place(x=800, y=260)
+    health_bar_gin.place(x=710, y=147)
 
 def show_hunger () :
     hunger_bar_kik = Label(fenetre, text= hunger_kik, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
@@ -82,16 +82,16 @@ def show_hunger () :
 
 def show_exhaustion () :
     ex_bar_kik = Label(fenetre, text= ex_kik, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_kik.place(x=100, y=200)
+    ex_bar_kik.place(x=80, y=200)
 
     ex_bar_vio = Label(fenetre, text= ex_vio, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_vio.place(x=350, y=200)
+    ex_bar_vio.place(x=300, y=200)
 
     ex_bar_mim = Label(fenetre, text= ex_mim, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_mim.place(x=575, y=200)
+    ex_bar_mim.place(x=500, y=200)
 
     ex_bar_gin = Label(fenetre, text= ex_gin, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_gin.place(x=800, y=200)
+    ex_bar_gin.place(x=700, y=200)
 
 def show_boredom () :
     bor_bar_kik = Label(fenetre, text= bor_kik,fg='blue',bg = 'white', font="Arial 15 italic")
@@ -107,8 +107,8 @@ def show_boredom () :
     bor_bar_gin.place(x=800, y=170)
 
 #show_hunger()
-#show_health()
-#show_exhaustion()
+show_health()
+show_exhaustion()
 #show_boredom()
 
 life = Label(fenetre, text= "♥   :",fg='firebrick1',bg = 'white', font="Arial 15 italic")
