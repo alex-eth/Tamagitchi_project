@@ -18,36 +18,41 @@ fenetre.geometry("1000x800")
 tama = Image.open("tama.png").resize((875, 225))
 tama = ImageTk.PhotoImage(tama)
 
+
 label_tama = Label(fenetre, image=tama)
 label_tama.pack()
 
 label_tama.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-##### Creation of variables and initialisation #####
+#### variables
 
-health_kik = ['♥','♥','♥','♥','♥','♥','♥']
-health_vio = ['♥','♥','♥','♥','♥','♥','♥']
-health_mim = ['♥','♥','♥','♥','♥','♥','♥']
-health_gin = ['♥','♥','♥','♥','♥','♥','♥']
+current_tama = "kiki"
 
-hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
-hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
-hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
-hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
+##### Creation of variables and initialisation (not used) #####
 
-ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+#health_kik = ['♥','♥','♥','♥','♥','♥','♥']
+#health_vio = ['♥','♥','♥','♥','♥','♥','♥']
+#health_mim = ['♥','♥','♥','♥','♥','♥','♥']
+#health_gin = ['♥','♥','♥','♥','♥','♥','♥']
+#
+#hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
+#
+#ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+#ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+#ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+#ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+#
+#bor_kik = ['😴','😴','😴','😴']
+#bor_vio = ['😴','😴','😴','😴']
+#bor_mim = ['😴','😴','😴','😴']
+#bor_gin = ['😴','😴','😴','😴']
 
-bor_kik = ['😴','😴','😴','😴']
-bor_vio = ['😴','😴','😴','😴']
-bor_mim = ['😴','😴','😴','😴']
-bor_gin = ['😴','😴','😴','😴']
 
 
-
-##### Functions #####
+##### Functions (show functions not used as well) #####
 
 def show_health () :
     health_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
@@ -113,7 +118,7 @@ hunger = Label(fenetre, text= "🍔  :",fg='chocolate1',bg = 'white', font="Aria
 hunger.place(x=5, y=173)
 
 ex = Label(fenetre, text= "⚡ :",fg='goldenrod1',bg = 'white', font="Arial 15 italic")
-ex.place(x=0, y=202)
+ex.place(x=8, y=202)
 
 bor = Label(fenetre, text= "😴 :",fg='cornflower blue',bg = 'white', font="Arial 15 italic")
 bor.place(x=2, y=225)
@@ -122,15 +127,54 @@ bor.place(x=2, y=225)
 
 def eat ():
     increase_hunger()
-#
-#
-#def sleep ():
-#
-#
-#
-#def play ():
-#
-#
+
+
+def sleep ():
+    canvas.itemconfig(tamagotchi, fill="blue")
+
+
+def play ():
+    canvas.itemconfig(tamagotchi, fill="yellow")
+
+#root = tk.Tk()
+
+#canvas = tk.Canvas(root, width=200, height=200)
+#canvas.pack()
+
+#tamagotchi = canvas.create_oval(80, 50, 120, 90, fill="yellow")
+
+#eat_button = tk.Button(root, text="Eat", command=eat)
+#eat_button.pack(side="left", padx=10)
+
+#sleep_button = tk.Button(root, text="Sleep", command=sleep)
+#sleep_button.pack(side="left", padx=10)
+
+#play_button = tk.Button(root, text="Play", command=play)
+#play_button.pack(side="left", padx=10)
+
+#### Selction of tamagotchis ####
+
+
+def use_kik () :
+    global current_tama
+    current_tama = "kiki"
+    return current_tama
+
+def use_vio () :
+    global current_tama
+    current_tama = "vio"
+    print(current_tama)
+    return current_tama
+
+def use_mim () :
+    global current_tama
+    current_tama = "mimi"
+    return current_tama
+
+def use_gin () :
+    global current_tama
+    current_tama = "gin"
+    return current_tama
 
 
 ###### Creation of the menu #####
@@ -160,32 +204,148 @@ bouton_sleep = Button(fenetre,text = " Sleep ",bg = 'cornflowerblue',border=roun
 bouton_sleep.configure(height=4, width=22)
 bouton_sleep.place(x=500,y=600)
 
+#### Selection buttons ####
+
+bouton_select_kik = Button(fenetre,text = " Use kik ",bg = 'yellow2',border=round(5), command = use_kik)
+bouton_select_kik.configure(height=2, width=10)
+bouton_select_kik.place(x=110,y=500)
+
+
+bouton_select_vio = Button(fenetre,text = " Use vio ",bg = 'MediumOrchid1',border=round(5), command = use_vio)
+bouton_select_vio.configure(height=2, width=10)
+bouton_select_vio.place(x=350,y=500)
+
+
+bouton_select_mim = Button(fenetre,text = " Use mim ",bg = 'ivory2',border=round(5), command = use_mim)
+bouton_select_mim.configure(height=2, width=10)
+bouton_select_mim.place(x=580,y=500)
+
+
+bouton_select_gin = Button(fenetre,text = " Use gin ",bg = 'SkyBlue2',border=round(5), command = use_gin)
+bouton_select_gin.configure(height=2, width=10)
+bouton_select_gin.place(x=810,y=500)
+
+
 #####################################################################################################################
 
-
-progress_bar = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
-progress_bar.pack()
+###### hunger bar kiki ################
+hunger_bar_ki = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_ki.place(x = 80, y =178)
 
 # maximum value of the progress bar
 max_value = 100
-progress_bar["maximum"] = max_value
+hunger_bar_ki["maximum"] = max_value
 
 # initial value of the progress bar
-progress_bar["value"] = max_value
+hunger_bar_ki["value"] = max_value
 
 
 
 # Function that decrease the progress bar value every 5 seconds
-def decrease_hunger():
-    current_value = progress_bar["value"]
+def decrease_hunger_ki():
+    current_value = hunger_bar_ki["value"]
     if current_value > 0:
-        progress_bar["value"] = current_value - 1
-    fenetre.after(5000, decrease_hunger)
+         hunger_bar_ki["value"] = current_value - 1
+    fenetre.after(5000, decrease_hunger_ki)
+
+############################################
+
+
+###### hunger bar vio ################
+hunger_bar_vio = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_vio.place(x = 285, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_vio["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_vio["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_vio():
+    current_value = hunger_bar_vio["value"]
+    if current_value > 0:
+         hunger_bar_vio["value"] = current_value - 1
+    fenetre.after(5000, decrease_hunger_vio)
+
+############################################
+
+###### hunger bar mimi ################
+hunger_bar_mim = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_mim.place(x = 490, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_mim["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_mim["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_mim():
+    current_value = hunger_bar_mim["value"]
+    if current_value > 0:
+         hunger_bar_mim["value"] = current_value - 1
+    fenetre.after(5000, decrease_hunger_mim)
+
+############################################
+
+###### hunger bar gin ################
+hunger_bar_gin = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_gin.place(x = 695, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_gin["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_gin["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_gin():
+    current_value = hunger_bar_gin["value"]
+    if current_value > 0:
+         hunger_bar_gin["value"] = current_value - 1
+    fenetre.after(5000, decrease_hunger_gin)
+
+############################################
+
+
 
 def increase_hunger():
-    current_value = progress_bar["value"]
-    progress_bar["value"] = current_value + 10
+    global current_tama
+    print(current_tama)
+    if current_tama == "kiki" :
+        current_value = hunger_bar_ki["value"]
+        hunger_bar_ki["value"] = current_value + 10
 
-decrease_hunger()
+    elif current_tama == "vio" :
+        current_value = hunger_bar_vio["value"]
+        hunger_bar_vio["value"] = current_value + 10
+
+
+    elif current_tama == "mimi" :
+        current_value = hunger_bar_mim["value"]
+        hunger_bar_mim["value"] = current_value + 10
+
+    elif current_tama == "gin" :
+        current_value = hunger_bar_gin["value"]
+        hunger_bar_gin["value"] = current_value + 10
+
+
+
+
+decrease_hunger_ki()
+decrease_hunger_vio()
+decrease_hunger_mim()
+decrease_hunger_gin()
 
 fenetre.mainloop()
+
