@@ -4,6 +4,8 @@ from PIL import Image, ImageTk
 from random import *
 import time
 from datetime import datetime
+from tkinter import ttk
+
 
 ##### Creation of the window #####
 fenetre = Tk()
@@ -16,49 +18,118 @@ fenetre.geometry("1000x800")
 tama = Image.open("tama.png").resize((875, 225))
 tama = ImageTk.PhotoImage(tama)
 
+
 label_tama = Label(fenetre, image=tama)
 label_tama.pack()
 
 label_tama.place(relx=0.5, rely=0.5, anchor=tk.CENTER)
 
-##### Creation of variables and initialisation #####
+#### variables
 
-health_kik = ['♥','♥','♥','♥','♥','♥','♥']
-health_vio = ['♥','♥','♥','♥','♥','♥','♥']
-health_mim = ['♥','♥','♥','♥','♥','♥','♥']
-health_gin = ['♥','♥','♥','♥','♥','♥','♥']
+current_tama = "kiki"
 
-hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
-hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
-hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
-hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
+##### Creation of variables and initialisation (not used for all) #####
 
-ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
-ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡','⚡']
+health_kik = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_vio = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_mim = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+health_gin = ['♥','♥','♥','♥','♥','♥','♥','♥','♥','♥']
+#
+#hunger_kik = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_vio = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_mim = ['🍔','🍔','🍔','🍔','🍔']
+#hunger_gin = ['🍔','🍔','🍔','🍔','🍔']
+#
+ex_kik = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_vio = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_mim = ['⚡','⚡','⚡','⚡','⚡','⚡']
+ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡']
+#
+#bor_kik = ['😴','😴','😴','😴']
+#bor_vio = ['😴','😴','😴','😴']
+#bor_mim = ['😴','😴','😴','😴']
+#bor_gin = ['😴','😴','😴','😴']
 
-bor_kik = ['😴','😴','😴','😴']
-bor_vio = ['😴','😴','😴','😴']
-bor_mim = ['😴','😴','😴','😴']
-bor_gin = ['😴','😴','😴','😴']
+
+###############################################
+
+
+h = 19
+m = 0
+d = 1
+s = 'Day'
+count = 51
+
+
+def clock():
+    global count, h, m, d, s
+    time.sleep(0.5)
+    m = m + 15
+    if m >= 60:
+        m = 0
+        if h == 23:
+            s = 'Night'
+        elif h == 5:
+            s = 'Day'
+            d = d + 1
+            count = 50
+        h = h + 1
+        if h >= 24:
+            h = 0
+    clock_label.config(text=f"{h:02}h{m:02}")
+    day_label.config(text=f"Day: {d}")
+    status_label.config(text=f"Status: {s}")
+    count_label.config(text=f"Count: {count}")
+    fenetre.after(500, clock)
+    return count, s, d, h, m
 
 
 
-##### Functions #####
+clock_label = ttk.Label(fenetre, text="")
+clock_label.place(x =850,y = 20)
+
+day_label = ttk.Label(fenetre, text="")
+day_label.place(x=850,y= 40)
+
+status_label = ttk.Label(fenetre, text="")
+status_label.place(x=850,y= 60)
+
+
+def cookie():
+    global count
+    count = count - 1
+    cookie_label.config(image=cookie_image)
+    count_label.config(text=f"Count: {count}")
+
+cookie_image = Image.open("cookie.png").resize((150, 150))
+cookie_image = ImageTk.PhotoImage(cookie_image)
+
+cookie_label = Label(fenetre,bg= 'white', image=cookie_image)
+cookie_label.place(x=800, y=610)
+
+count_label = Label(fenetre,bg= 'white', text=f"Count: {count}")
+count_label.place(x=800, y=620)
+
+
+
+clock()
+
+
+
+##### Functions (show functions not used as well) #####
 
 def show_health () :
     health_bar_kik = Label(fenetre, text= health_kik, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_kik.place(x=100, y=260)
+    health_bar_kik.place(x=95, y=147)
 
     health_bar_vio = Label(fenetre, text= health_vio, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_vio.place(x=350, y=260)
+    health_bar_vio.place(x=300, y=147)
 
     health_bar_mim = Label(fenetre, text= health_mim, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_mim.place(x=575, y=260)
+    health_bar_mim.place(x=500, y=147)
 
     health_bar_gin = Label(fenetre, text= health_gin, fg='red',bg = 'white', font="Arial 15 italic")
-    health_bar_gin.place(x=800, y=260)
+    health_bar_gin.place(x=710, y=147)
 
 def show_hunger () :
     hunger_bar_kik = Label(fenetre, text= hunger_kik, fg='goldenrod2',bg = 'white', font="Arial 15 italic")
@@ -75,16 +146,16 @@ def show_hunger () :
 
 def show_exhaustion () :
     ex_bar_kik = Label(fenetre, text= ex_kik, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_kik.place(x=100, y=200)
+    ex_bar_kik.place(x=80, y=200)
 
     ex_bar_vio = Label(fenetre, text= ex_vio, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_vio.place(x=350, y=200)
+    ex_bar_vio.place(x=300, y=200)
 
     ex_bar_mim = Label(fenetre, text= ex_mim, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_mim.place(x=575, y=200)
+    ex_bar_mim.place(x=500, y=200)
 
     ex_bar_gin = Label(fenetre, text= ex_gin, fg='gold',bg = 'white', font="Arial 15 italic")
-    ex_bar_gin.place(x=800, y=200)
+    ex_bar_gin.place(x=700, y=200)
 
 def show_boredom () :
     bor_bar_kik = Label(fenetre, text= bor_kik,fg='blue',bg = 'white', font="Arial 15 italic")
@@ -99,10 +170,77 @@ def show_boredom () :
     bor_bar_gin = Label(fenetre, text= bor_gin,fg='blue',bg = 'white', font="Arial 15 italic")
     bor_bar_gin.place(x=800, y=170)
 
-show_hunger()
+#show_hunger()
 show_health()
 show_exhaustion()
-show_boredom()
+#show_boredom()
+
+life = Label(fenetre, text= "♥   :",fg='firebrick1',bg = 'white', font="Arial 15 italic")
+life.place(x=10, y=150)
+
+hunger = Label(fenetre, text= "🍔  :",fg='chocolate1',bg = 'white', font="Arial 15 italic")
+hunger.place(x=5, y=173)
+
+ex = Label(fenetre, text= "⚡ :",fg='goldenrod1',bg = 'white', font="Arial 15 italic")
+ex.place(x=8, y=202)
+
+bor = Label(fenetre, text= "😴 :",fg='cornflower blue',bg = 'white', font="Arial 15 italic")
+bor.place(x=2, y=225)
+
+##### Functions for buttons ######
+
+def eat ():
+    increase_hunger()
+    cookie()
+
+
+def sleep ():
+    canvas.itemconfig(tamagotchi, fill="blue")
+
+
+def play ():
+    canvas.itemconfig(tamagotchi, fill="yellow")
+
+#root = tk.Tk()
+
+#canvas = tk.Canvas(root, width=200, height=200)
+#canvas.pack()
+
+#tamagotchi = canvas.create_oval(80, 50, 120, 90, fill="yellow")
+
+#eat_button = tk.Button(root, text="Eat", command=eat)
+#eat_button.pack(side="left", padx=10)
+
+#sleep_button = tk.Button(root, text="Sleep", command=sleep)
+#sleep_button.pack(side="left", padx=10)
+
+#play_button = tk.Button(root, text="Play", command=play)
+#play_button.pack(side="left", padx=10)
+
+#### Selction of tamagotchis ####
+
+
+def use_kik () :
+    global current_tama
+    current_tama = "kiki"
+    return current_tama
+
+def use_vio () :
+    global current_tama
+    current_tama = "vio"
+    print(current_tama)
+    return current_tama
+
+def use_mim () :
+    global current_tama
+    current_tama = "mimi"
+    return current_tama
+
+def use_gin () :
+    global current_tama
+    current_tama = "gin"
+    return current_tama
+
 
 ###### Creation of the menu #####
 
@@ -119,7 +257,7 @@ file_menu.add_command(label="Save", command=fenetre.destroy)
 
 
 ##### Creation of the buttons #####
-bouton_eat = Button(fenetre,text = " Eat ",bg = 'chocolate2',border=round(5), command = fenetre.destroy)
+bouton_eat = Button(fenetre,text = " Eat ",bg = 'chocolate2',border=round(5), command = eat)
 bouton_eat.configure(height=4, width=22)
 bouton_eat.place(x=10,y=600)
 
@@ -131,6 +269,201 @@ bouton_sleep = Button(fenetre,text = " Sleep ",bg = 'cornflowerblue',border=roun
 bouton_sleep.configure(height=4, width=22)
 bouton_sleep.place(x=500,y=600)
 
+#### Selection buttons ####
 
+bouton_select_kik = Button(fenetre,text = " Use kik ",bg = 'yellow2',border=round(5), command = use_kik)
+bouton_select_kik.configure(height=2, width=10)
+bouton_select_kik.place(x=110,y=500)
+
+
+bouton_select_vio = Button(fenetre,text = " Use vio ",bg = 'MediumOrchid1',border=round(5), command = use_vio)
+bouton_select_vio.configure(height=2, width=10)
+bouton_select_vio.place(x=350,y=500)
+
+
+bouton_select_mim = Button(fenetre,text = " Use mim ",bg = 'ivory2',border=round(5), command = use_mim)
+bouton_select_mim.configure(height=2, width=10)
+bouton_select_mim.place(x=580,y=500)
+
+
+bouton_select_gin = Button(fenetre,text = " Use gin ",bg = 'SkyBlue2',border=round(5), command = use_gin)
+bouton_select_gin.configure(height=2, width=10)
+bouton_select_gin.place(x=810,y=500)
+
+
+#####################################################################################################################
+
+lose = Image.open("lose.gif").resize((1000, 1000), Image.ANTIALIAS)
+lose = ImageTk.PhotoImage(lose)
+
+
+###### hunger bar kiki ################
+hunger_bar_ki = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_ki.place(x = 80, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_ki["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_ki["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_ki():
+    global health_kik
+    current_value = hunger_bar_ki["value"]
+    if current_value > 0:
+         hunger_bar_ki["value"] = current_value - 1
+    else :
+        health_kik.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=95, y=147)
+        health_bar_kik = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_kik.place(x=95, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
+    fenetre.after(5000, decrease_hunger_ki)
+
+############################################
+
+
+###### hunger bar vio ################
+hunger_bar_vio = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_vio.place(x = 285, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_vio["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_vio["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_vio():
+    current_value = hunger_bar_vio["value"]
+    if current_value > 0:
+         hunger_bar_vio["value"] = current_value - 1
+
+    else :
+        health_vio.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=300, y=147)
+        health_bar_vio = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_vio.place(x=300, y=147)
+        if health_vio == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
+    fenetre.after(5000, decrease_hunger_vio)
+
+############################################
+
+###### hunger bar mimi ################
+hunger_bar_mim = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_mim.place(x = 490, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_mim["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_mim["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_mim():
+    current_value = hunger_bar_mim["value"]
+    if current_value > 0:
+         hunger_bar_mim["value"] = current_value - 1
+
+    else :
+        health_mim.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=500, y=147)
+        health_bar_vio = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_vio.place(x=500, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
+    fenetre.after(5000, decrease_hunger_mim)
+
+############################################
+
+###### hunger bar gin ################
+hunger_bar_gin = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
+hunger_bar_gin.place(x = 695, y =178)
+
+# maximum value of the progress bar
+max_value = 100
+hunger_bar_gin["maximum"] = max_value
+
+# initial value of the progress bar
+hunger_bar_gin["value"] = max_value
+
+
+
+# Function that decrease the progress bar value every 5 seconds
+def decrease_hunger_gin():
+    current_value = hunger_bar_gin["value"]
+    if current_value > 0:
+         hunger_bar_gin["value"] = current_value - 1
+
+    else :
+        health_gin.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=710, y=147)
+        health_bar_gin = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_gin.place(x=710, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
+
+    fenetre.after(5000, decrease_hunger_gin)
+
+############################################
+
+
+
+def increase_hunger():
+    global current_tama
+    print(current_tama)
+    if current_tama == "kiki" :
+        current_value = hunger_bar_ki["value"]
+        hunger_bar_ki["value"] = current_value + 10
+
+    elif current_tama == "vio" :
+        current_value = hunger_bar_vio["value"]
+        hunger_bar_vio["value"] = current_value + 10
+
+
+    elif current_tama == "mimi" :
+        current_value = hunger_bar_mim["value"]
+        hunger_bar_mim["value"] = current_value + 10
+
+    elif current_tama == "gin" :
+        current_value = hunger_bar_gin["value"]
+        hunger_bar_gin["value"] = current_value + 10
+
+
+
+
+decrease_hunger_ki()
+decrease_hunger_vio()
+decrease_hunger_mim()
+decrease_hunger_gin()
 
 fenetre.mainloop()
+
