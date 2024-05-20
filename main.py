@@ -293,6 +293,10 @@ bouton_select_gin.place(x=810,y=500)
 
 #####################################################################################################################
 
+lose = Image.open("lose.gif").resize((1000, 1000), Image.ANTIALIAS)
+lose = ImageTk.PhotoImage(lose)
+
+
 ###### hunger bar kiki ################
 hunger_bar_ki = ttk.Progressbar(fenetre, orient="horizontal", length=200, mode="determinate")
 hunger_bar_ki.place(x = 80, y =178)
@@ -308,11 +312,21 @@ hunger_bar_ki["value"] = max_value
 
 # Function that decrease the progress bar value every 5 seconds
 def decrease_hunger_ki():
+    global health_kik
     current_value = hunger_bar_ki["value"]
     if current_value > 0:
          hunger_bar_ki["value"] = current_value - 1
     else :
         health_kik.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=95, y=147)
+        health_bar_kik = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_kik.place(x=95, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
     fenetre.after(5000, decrease_hunger_ki)
 
 ############################################
@@ -336,6 +350,18 @@ def decrease_hunger_vio():
     current_value = hunger_bar_vio["value"]
     if current_value > 0:
          hunger_bar_vio["value"] = current_value - 1
+
+    else :
+        health_vio.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=300, y=147)
+        health_bar_vio = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_vio.place(x=300, y=147)
+        if health_vio == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
     fenetre.after(5000, decrease_hunger_vio)
 
 ############################################
@@ -358,6 +384,18 @@ def decrease_hunger_mim():
     current_value = hunger_bar_mim["value"]
     if current_value > 0:
          hunger_bar_mim["value"] = current_value - 1
+
+    else :
+        health_mim.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=500, y=147)
+        health_bar_vio = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_vio.place(x=500, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
     fenetre.after(5000, decrease_hunger_mim)
 
 ############################################
@@ -380,6 +418,19 @@ def decrease_hunger_gin():
     current_value = hunger_bar_gin["value"]
     if current_value > 0:
          hunger_bar_gin["value"] = current_value - 1
+
+    else :
+        health_gin.pop()
+        canevas = Canvas(fenetre, width=180, height=20, bg="white", highlightbackground="white")
+        canevas.place(x=710, y=147)
+        health_bar_gin = Label(fenetre, text=health_kik, fg='red', bg='white', font="Arial 15 italic")
+        health_bar_gin.place(x=710, y=147)
+        if health_kik == [] :
+            canevas = Canvas(fenetre, width=1000, height=1000, bg="white", highlightbackground="white")
+            canevas.place(x=0, y=0)
+            canevas.create_image(0, 0, anchor=NW, image=lose)
+
+
     fenetre.after(5000, decrease_hunger_gin)
 
 ############################################
