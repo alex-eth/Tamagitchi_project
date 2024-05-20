@@ -51,6 +51,70 @@ ex_gin = ['⚡','⚡','⚡','⚡','⚡','⚡']
 #bor_gin = ['😴','😴','😴','😴']
 
 
+###############################################
+
+
+h = 19
+m = 0
+d = 1
+s = 'Day'
+count = 51
+
+
+def clock():
+    global count, h, m, d, s
+    time.sleep(0.5)
+    m = m + 15
+    if m >= 60:
+        m = 0
+        if h == 23:
+            s = 'Night'
+        elif h == 5:
+            s = 'Day'
+            d = d + 1
+            count = 50
+        h = h + 1
+        if h >= 24:
+            h = 0
+    clock_label.config(text=f"{h:02}h{m:02}")
+    day_label.config(text=f"Day: {d}")
+    status_label.config(text=f"Status: {s}")
+    count_label.config(text=f"Count: {count}")
+    fenetre.after(500, clock)
+    return count, s, d, h, m
+
+
+
+clock_label = ttk.Label(fenetre, text="")
+clock_label.place(x =850,y = 20)
+
+day_label = ttk.Label(fenetre, text="")
+day_label.place(x=850,y= 40)
+
+status_label = ttk.Label(fenetre, text="")
+status_label.place(x=850,y= 60)
+
+
+def cookie():
+    global count
+    count = count - 1
+    cookie_label.config(image=cookie_image)
+    count_label.config(text=f"Count: {count}")
+
+cookie_image = Image.open("cookie.png").resize((150, 150))
+cookie_image = ImageTk.PhotoImage(cookie_image)
+
+cookie_label = Label(fenetre,bg= 'white', image=cookie_image)
+cookie_label.place(x=800, y=610)
+
+count_label = Label(fenetre,bg= 'white', text=f"Count: {count}")
+count_label.place(x=800, y=620)
+
+
+
+clock()
+
+
 
 ##### Functions (show functions not used as well) #####
 
@@ -127,6 +191,7 @@ bor.place(x=2, y=225)
 
 def eat ():
     increase_hunger()
+    cookie()
 
 
 def sleep ():
@@ -246,6 +311,8 @@ def decrease_hunger_ki():
     current_value = hunger_bar_ki["value"]
     if current_value > 0:
          hunger_bar_ki["value"] = current_value - 1
+    else :
+        health_kik.pop()
     fenetre.after(5000, decrease_hunger_ki)
 
 ############################################
